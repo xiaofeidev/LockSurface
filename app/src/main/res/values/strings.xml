@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">LockSurface</string>
+    <string name="app_version">LockSurface 1.0</string>
+
+    <string name="hour">输入小时</string>
+    <string name="minute">输入分钟</string>
+    <string name="negative">撤销</string>
+    <string name="positive">锁定</string>
+
+    <string name="aboutDeveloper">作者：github@xiaofei-dev</string>
+    <string name="openSourceLink">https://github.com/xiaofei-dev/LockSurface</string>
+    <string name="aboutXBB_Title">关于本应用：</string>
+    <string name="aboutXBB_OpenSource">
+        ▶ 您可以点此访问<a href="">项目托管地址</a>。
+    </string>
+    <string name="aboutXBB_ScoreAndFeedback">
+        ▶ 您还可以点此给应用<a href="">评分或反馈</a>。
+    </string>
+    <string name="aboutXBB_Donate">
+        ▶ 点这儿<a href="">打赏</a>几块钱给作者买纸巾。
+    </string>
+    <string name="iKnow">知道了</string>
+
+    <string name="error_hour">小时数不得大于 24</string>
+    <string name="error_minute">分钟数不得大于 86400</string>
+    <string name="error_zero">不可都为零</string>
+
+    <string name="setting">设置</string>
+    <string name="checkBox">重启手机保持锁定</string>
+    <string name="about">关于</string>
+
+    <string name="alert">您确定吗？</string>
+    <string name="alert_hint">在您设定的时间段内手机将被锁定，您将无法操作主屏幕区域，
+        但状态栏和导航栏您仍可正常操作。</string>
+    <string name="check_boot_alarm">打开重启手机保持锁定后重启手机将无法解除锁定，请知悉此风险</string>
+
+
+</resources>
