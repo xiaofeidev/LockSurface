@@ -72,17 +72,17 @@
 #-keep public class com.android.vending.licensing.ILicensingService
 
 
-# 保留support下的所有类及其内部类
--keep class android.support.** { *; }
--keep interface android.support.** { *; }
-
-# 保留继承的
-#-keep public class * extends android.support.v4.**
-#-keep public class * extends android.support.v7.**
-#-keep public class * extends android.support.annotation.**
-
-# 保留R下面的资源
--keep class **.R$* {*;}
+## 保留support下的所有类及其内部类
+#-keep class android.support.** { *; }
+#-keep interface android.support.** { *; }
+#
+## 保留继承的
+##-keep public class * extends android.support.v4.**
+##-keep public class * extends android.support.v7.**
+##-keep public class * extends android.support.annotation.**
+#
+## 保留R下面的资源
+#-keep class **.R$* {*;}
 
 # 保留本地native方法不被混淆
 -keepclasseswithmembernames class * {
