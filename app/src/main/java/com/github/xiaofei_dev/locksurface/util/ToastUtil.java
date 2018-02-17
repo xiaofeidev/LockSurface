@@ -7,7 +7,7 @@ import android.widget.Toast;
  * Created by Administrator on 2017/4/24.
  */
 
-public final class ToastUtils {
+public final class ToastUtil {
 
     public static void showShort(int stringId) {
         Toast.makeText(MyApplication.getContext(), stringId, Toast.LENGTH_SHORT).show();

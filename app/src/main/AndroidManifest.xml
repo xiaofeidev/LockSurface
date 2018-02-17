@@ -3,6 +3,7 @@
           package="com.github.xiaofei_dev.locksurface">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".util.MyApplication"
@@ -15,7 +16,6 @@
             android:name=".ui.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
             android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -27,7 +27,6 @@
         <activity
             android:name=".ui.AboutActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-            android:screenOrientation="portrait"
             android:theme="@style/Dialog"
             android:excludeFromRecents="true">
         </activity>

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LockSurface.iml" filepath="$PROJECT_DIR$/LockSurface.iml" />
+      <module fileurl="file://H:\androidProjectMe\LockSurface\LockSurface.iml" filepath="H:\androidProjectMe\LockSurface\LockSurface.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://H:\androidProjectMe\LockSurface\app\app.iml" filepath="H:\androidProjectMe\LockSurface\app\app.iml" />
     </modules>
   </component>
 </project>

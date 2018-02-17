@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -18,7 +19,7 @@ import android.widget.FrameLayout;
 
 import com.github.xiaofei_dev.locksurface.R;
 import com.github.xiaofei_dev.locksurface.ui.MainActivity;
-import com.github.xiaofei_dev.locksurface.util.ToastUtils;
+import com.github.xiaofei_dev.locksurface.util.ToastUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,7 +48,7 @@ public final class LockService extends Service {
         iconFloatView.findViewById(R.id.lock_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showShort("此手机已被锁定，预计解锁时间 : \n" + awakenTime);
+                ToastUtil.showShort("此手机已被锁定，预计解锁时间 : \n" + awakenTime);
 
             }
         });
@@ -56,18 +57,26 @@ public final class LockService extends Service {
 
         mLayoutParams = new WindowManager.LayoutParams();
         mLayoutParams.gravity = Gravity.CENTER;
-        //mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
-        mLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_FULLSCREEN
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+        }
+//        mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+//        mLayoutParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        /*mLayoutParams.flags = WindowManager.LayoutParams.FLAG_FULLSCREEN
                 |WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-                |WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR;
+                |WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR;*/
                 /*WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
                 |WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                 | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH*/
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
         mLayoutParams.format = PixelFormat.TRANSLUCENT;
         mLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         mLayoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
