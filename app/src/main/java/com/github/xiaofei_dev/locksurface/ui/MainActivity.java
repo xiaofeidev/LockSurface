@@ -3,6 +3,7 @@ package com.github.xiaofei_dev.locksurface.ui;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -60,8 +61,8 @@ public final class MainActivity extends AppCompatActivity {
                 //没有悬浮窗权限,去开启悬浮窗权限
                 ToastUtil.showShort("您需要授予应用在其他应用的上层显示的权限才可正常使用");
                 try{
-                    Intent  intent=new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-                    startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
+                    Intent intent1 = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+                    startActivityForResult(intent1, OVERLAY_PERMISSION_REQ_CODE);
                 }catch (Exception e)
                 {
                     e.printStackTrace();
@@ -74,13 +75,17 @@ public final class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
             if(Build.VERSION.SDK_INT>=23) {
-                if (!Settings.canDrawOverlays(this)) {
-                    ToastUtil.showShort("获取权限失败，应用将无法工作");
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(),"获取权限成功！应用可以正常使用了",Toast.LENGTH_SHORT).show();
-
-                }
+                mHour.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!Settings.canDrawOverlays(MainActivity.this)) {
+                            ToastUtil.showShort("获取权限失败，应用将无法工作");
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(),"获取权限成功！应用可以正常使用了",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, 500);
             }
         }
     }
